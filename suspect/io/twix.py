@@ -564,15 +564,19 @@ def anonymize_twix_header(header_string):
     # As Siemens uses date and time to refer to other scans, we need to censor
     # any string which contains the date of this exam. Also some references
     # seem to use the date with the short form of the year so we match that
-    frame_of_reference = re.search(r"(<ParamString.\"FrameOfReference\">  { )(\".+\")(  }\n)", header_string).group(2)
-    exam_date_time = frame_of_reference.split(".")[10]
-    exam_date = exam_date_time[2:8]
+    try:
+        frame_of_reference = re.search(r"(<ParamString.\"FrameOfReference\">  { )(\".+\")(  }\n)", header_string).group(2)
+        exam_date_time = frame_of_reference.split(".")[10]
+        exam_date = exam_date_time[2:8]
 
-    # any string which contains the exam date has all alpha-numerics replaced
-    # by the character x
-    header_string = re.sub(r"\"[\d\.]*{0}[\d\.]*\"".format(exam_date),
-                           lambda match: re.sub(r"\w", "x", match.group()),
-                           header_string)
+        # any string which contains the exam date has all alpha-numerics replaced
+        # by the character x
+        header_string = re.sub(r"\"[\d\.]*{0}[\d\.]*\"".format(exam_date),
+                               lambda match: re.sub(r"\w", "x", match.group()),
+                               header_string)
+
+    except Exception as e:
+        print("Error: {} exam_date may no longer be present".format(e))
 
     return header_string
 
