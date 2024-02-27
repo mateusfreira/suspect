@@ -4,4 +4,3 @@ nbsphinx
 ipykernel
 lmfit=1.2.2
 parsley
-scipy
