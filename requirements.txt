@@ -2,5 +2,5 @@ setuptools>=26.0
 sphinx>=1.4
 nbsphinx
 ipykernel
-lmfit=1.2.2
+lmfit==1.2.2
 parsley
