@@ -41,6 +41,6 @@ setup(
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
         ],
-        install_requires=['pywavelets', 'scipy', 'lmfit==1.2.2', 'parsley', 'parse', 'nibabel'],
+        install_requires=['pywavelets', 'lmfit==1.2.2', 'parsley', 'parse', 'nibabel'],
         test_requires=['pytest', 'mock', 'numpydoc']
 )
