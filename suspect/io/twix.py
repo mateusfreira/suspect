@@ -120,7 +120,8 @@ def get_meta_regex(regex_list, header_string, convert=1, default=None):
             except (ValueError, TypeError):
                 result = match_string if match_string else default
             return result
-    raise KeyError("Regex list not found in header string. {}".format(regex_list))
+    print("Regex list not found in header string. {}".format(regex_list))
+    return default
 
 
 def parse_twix_header(header_string):
